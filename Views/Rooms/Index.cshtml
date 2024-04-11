@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Hotel_Project_Marti_i_Stanko.Models.Room>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Scripts{
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#indexTable').DataTable();
+        });
+    </script>
+}
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="table-responsive">
+<table id="indexTable" class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roomType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isOccupied)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.priceForAdult)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.priceForChild)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.number)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.roomType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isOccupied)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.priceForAdult)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.priceForChild)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.number)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+ </div>

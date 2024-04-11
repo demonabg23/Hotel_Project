@@ -1,0 +1,57 @@
+﻿@model Hotel_Project_Marti_i_Stanko.Models.Reservation
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Reservation</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.checkInDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.checkInDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.vacatingDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.vacatingDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.includingBreakfast)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.includingBreakfast)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.isAllInclusive)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.isAllInclusive)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.totalPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.totalPrice)
+        </dd>
+    </dl>
+</div>
+@foreach (var reservation in Model.ReservationClients)
+{
+    <a asp-controller="Reservations" asp-action="Details" asp-route-id="@reservation.Reservation.Id"><h1>lele</h1></a>
+    @if (reservation == null)
+    {
+        <a>ugh</a>
+    }
+}
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
